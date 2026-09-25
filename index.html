@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Me - Academic background, technical skills, and project experience." />
+  <title>About Me | Rajeswari Kakumanu</title>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #5d6678;
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --border: #e5e7eb;
+      --shadow: 0 12px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc 55%, #ede9fe);
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 0;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .hero {
+      padding: 100px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: var(--primary-dark);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .highlight { color: var(--primary); }
+
+    .hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+    }
+
+    .btn-secondary:hover { transform: translateY(-2px); }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      font-size: 2.4rem;
+      font-weight: 800;
+    }
+
+    .profile-card h2 { margin-bottom: 5px; }
+    .profile-card p { color: var(--muted); }
+
+    section { padding: 80px 0; }
+
+    .section-title {
+      margin-bottom: 34px;
+    }
+
+    .section-title span {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      margin-top: 6px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th, td {
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: #eef2ff;
+      color: var(--primary-dark);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-number {
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .project-card h3 { margin-bottom: 10px; }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .tech-line {
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .project-link {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .link-card {
+      flex: 1 1 220px;
+      display: block;
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 15px;
+      transition: 0.2s;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      border-color: #c7d2fe;
+      box-shadow: var(--shadow);
+    }
+
+    .link-card strong { display: block; margin-bottom: 5px; }
+    .link-card span { color: var(--muted); font-size: 0.9rem; }
+
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid, .projects { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .profile-card { max-width: 420px; margin: auto; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 90px; }
+      section { padding: 60px 0; }
+      .skills-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 3rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="home">
+    <nav>
+      <div class="container">
+        <div class="logo">About Me</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#links">Links</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container hero">
+      <div class="hero-grid">
+        <div>
+          
+          <h1>Hello, I'm <span class="highlight">Rajeswari Kakumanu</span></h1>
+          <p>
+            I am a Computer Science and Engineering student with an interest in
+            software development, data analytics, artificial intelligence, and
+            web technologies. I enjoy building practical projects that solve
+            real-world problems. I am continuously improving my programming,
+            problem-solving, and teamwork skills. My goal is to begin my
+            professional career as a software or technology professional.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="https://github.com/rajeswarikakumanu/Customer-_segmentation">View Projects</a>
+
+            <a class="btn btn-secondary" href="https://github.com/rajeswarikakumanu">Professional Links</a>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar">RK</div>
+          <h2>Rajeswari Kakumanu</h2>
+          <p>B.Tech CSE</p>
+          <p>Narasaraopeta Engineering College, Narasaraopet</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <span>01 · Profile</span>
+          <h2>Profile Overview</h2>
+        </div>
+        <div class="card">
+          <p>
+            I am pursuing a Bachelor of Technology in Computer Science and
+            Engineering. My academic interests include software engineering,
+            data analytics, artificial intelligence, databases, and web
+            development. I like learning new technologies through hands-on
+            projects and practical problem solving. I am looking forward to
+            applying my technical knowledge in a professional environment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses">
+      <div class="container">
+        <div class="section-title">
+          <span>02 · Education</span>
+          <h2>Courses Taken</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Course</th>
+                
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Data Analytics</td><td>In progress</td></tr>
+              <tr><td>Python 101</td><td>Completed</td></tr>
+              
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <span>03 · Expertise</span>
+          <h2>Technical Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card skill-card">
+            <h3>Programming Languages</h3>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">Python</span>
+              
+              
+            
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Technologies / Frameworks</h3>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+  
+              <span class="tag">SQL</span>
+              
+              
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Tools</h3>
+            <div class="tags">
+              
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+              
+              <span class="tag">Power BI</span>
+              
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>AI Tools</h3>
+            <div class="tags">
+              <span class="tag">ChatGPT</span>
+              <span class="tag">GitHub Copilot</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <span>04 · Experience</span>
+          <h2>Projects / Websites</h2>
+        </div>
+
+        <div class="projects">
+          <article class="card project-card">
+            <div class="project-number">PROJECT 01</div>
+            <h3>AI-Powered Healthcare Prediction & Resource Management System</h3>
+            <p>
+              A web-based application designed to support healthcare prediction
+              and resource management. It combines a user-friendly interface
+              with data-driven functionality for patients, doctors, and
+              administrators.
+            </p>
+            <div class="tech-line"><strong>Technologies:</strong> Python, Flask, HTML, CSS, SQL, Machine Learning</div>
+
+
+          <article class="card project-card">
+            <div class="project-number">PROJECT 02</div>
+            <h3>NarrativeFlow Co-Writer</h3>
+            <p>
+              An AI-assisted story writing application that helps users create
+              stories by genre and continue them interactively. The application
+              focuses on a simple interface and AI-generated storytelling.
+            </p>
+            <div class="tech-line"><strong>Technologies:</strong> Python, Streamlit, Ollama, HTML/CSS</div>
+      
+          </article>
+
+          
+
+          <article class="card project-card">
+            <div class="project-number">PROJECT 03</div>
+            <h3>AI Customer Segmentation</h3>
+            <p>
+              A data analytics application that groups customers into
+              meaningful segments using customer attributes and spending
+              behavior, helping businesses understand different customer
+              groups.
+            </p>
+            <div class="tech-line"><strong>Technologies:</strong> Python, Streamlit, Pandas, Scikit-learn, K-Means</div>
+            
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="links">
+      <div class="container">
+        <div class="section-title">
+          <span>05 · Connect</span>
+          <h2>Professional Links</h2>
+        </div>
+
+        <div class="links">
+          <!-- Replace the # links below with your actual profiles before deployment. -->
+          <a class="link-card" href="#" target="_blank" rel="noopener noreferrer">
+            <strong>GitHub</strong>
+            <span>https://github.com/rajeswarikakumanu</span>
+          </a>
+
+          
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Rajeswari Kakumanu · About Me
+    </div>
+  </footer>
+</body>
+</html>
