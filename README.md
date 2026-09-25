@@ -30,3 +30,4 @@ git push -u origin main
 3. For a plain HTML site, no build command is required.
 4. Deploy.
 5. Vercel will provide a public URL.
+6. URL:https://vercel.com/rajeswarikakumanu2005-9591/about-me-last-name-first-name
